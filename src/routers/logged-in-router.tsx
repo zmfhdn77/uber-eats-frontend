@@ -8,13 +8,49 @@ import { ConfirmEmail } from "../pages/user/confirm-email";
 import { EditProfile } from "../pages/user/edit-profile";
 import { Search } from "../pages/client/search";
 import { Categories } from "../pages/client/categories";
+import { RestaurantDetail } from "../pages/client/restaurant-detail";
+import { MyRestaurants } from "../pages/owner/my-restaurants";
+import { AddRestaurant } from "../pages/owner/add-restaurants";
 
-const ClientRoutes = [
-  <Route key={1} path="/" element={<Restaurants />} />,
-  <Route key={2} path="/confirm" element={<ConfirmEmail />} />,
-  <Route key={3} path="/edit-profile" element={<EditProfile />} />,
-  <Route key={4} path="/search" element={<Search />} />,
-  <Route key={5} path="/category/:slug" element={<Categories />} />,
+const clientRoutes = [
+  {
+    path: "/",
+    component: <Restaurants />,
+  },
+  {
+    path: "/search",
+    component: <Search />,
+  },
+  {
+    path: "/category/:slug",
+    component: <Categories />,
+  },
+  {
+    path: "/restaurant/:id",
+    component: <RestaurantDetail />,
+  },
+];
+
+const commonRoutes = [
+  {
+    path: "/confirm",
+    component: <ConfirmEmail />,
+  },
+  {
+    path: "/edit-profile",
+    component: <EditProfile />,
+  },
+];
+
+const restaurantRoutes = [
+  {
+    path: "/",
+    component: <MyRestaurants />,
+  },
+  {
+    path: "/add-restaurant",
+    component: <AddRestaurant />,
+  },
 ];
 
 export const LoggedInRouter = () => {
@@ -31,7 +67,28 @@ export const LoggedInRouter = () => {
     <Router>
       <Header />
       <Routes>
-        {data.me.role === "Client" && ClientRoutes}
+        {data.me.role === "Client" &&
+          clientRoutes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.component}
+            />
+          ))}
+
+        {data.me.role === "Owner" &&
+          restaurantRoutes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.component}
+            />
+          ))}
+
+        {commonRoutes.map((route) => (
+          <Route key={route.path} path={route.path} element={route.component} />
+        ))}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
