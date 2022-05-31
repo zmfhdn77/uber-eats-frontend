@@ -6,11 +6,15 @@ import { Header } from "../components/header";
 import { useMe } from "../hooks/useMe";
 import { ConfirmEmail } from "../pages/user/confirm-email";
 import { EditProfile } from "../pages/user/edit-profile";
+import { Search } from "../pages/client/search";
+import { Category } from "../pages/client/category";
 
 const ClientRoutes = [
   <Route key={1} path="/" element={<Restaurants />} />,
   <Route key={2} path="/confirm" element={<ConfirmEmail />} />,
   <Route key={3} path="/edit-profile" element={<EditProfile />} />,
+  <Route key={4} path="/search" element={<Search />} />,
+  <Route key={5} path="/category/:slug" element={<Category />} />,
 ];
 
 export const LoggedInRouter = () => {
@@ -22,7 +26,7 @@ export const LoggedInRouter = () => {
       </div>
     );
   }
-  console.log(data.me.role);
+
   return (
     <Router>
       <Header />

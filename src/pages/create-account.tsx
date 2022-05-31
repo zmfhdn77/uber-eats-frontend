@@ -47,7 +47,7 @@ export const CreateAccount = () => {
     } = data;
     if (ok) {
       //redirect
-      navigate("/", { replace: true });
+      navigate("/");
     }
   };
 
