@@ -23,7 +23,7 @@ const CATEGORY_QUERY = gql`
   ${RESTAURANT_FRAGMENT}
   ${CATEGORY_FRAGMENT}
 `;
-export const Category = () => {
+export const Categories = () => {
   const param = useParams<{ slug: string }>();
   const [page, setPage] = useState(1);
   const { data, loading } = useQuery<category, categoryVariables>(
@@ -41,8 +41,6 @@ export const Category = () => {
 
   const onNextPageClick = () => setPage((current) => current + 1);
   const onPrevPageClick = () => setPage((current) => current - 1);
-
-  console.log(data);
 
   return (
     <div>

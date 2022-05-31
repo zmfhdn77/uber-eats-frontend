@@ -80,10 +80,13 @@ export const Restaurants = () => {
       {!loading && (
         <div className="max-w-screen-4xl mx-auto mt-8">
           <div className="flex justify-around max-w-screen-sm mx-auto">
-            {data?.allCategories.categories?.map((category, index) => (
-              <Link to={`/category/${category.slug}`}>
+            {data?.allCategories.categories?.map((category) => (
+              <Link
+                key={`link:${category.id}`}
+                to={`/category/${category.slug}`}
+              >
                 <Category
-                  key={category.id}
+                  key={`category:${category.id}`}
                   coverImg={category.coverImg ? category.coverImg : ""}
                   name={category.name}
                 />
@@ -93,7 +96,7 @@ export const Restaurants = () => {
           <div className="mt-10 grid md:grid-cols-3 mb-8 gap-x-5 gap-y-10">
             {data?.restaurants.restaurants?.map((restaurant) => (
               <Restaurant
-                key={restaurant.id}
+                key={`restaurant:${restaurant.id}`}
                 id={restaurant.id + ""}
                 coverImg={restaurant.coverImg}
                 name={restaurant.name}
