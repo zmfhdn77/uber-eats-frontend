@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { RESTAURANT_FRAGMENT } from "../../fragments";
 import {
@@ -35,6 +36,9 @@ export const RestaurantDetail = () => {
   console.log(data?.restaurant.restaurant);
   return (
     <div>
+      <Helmet>
+        <title>Restaurant Detail | Uber Eats</title>
+      </Helmet>
       <div
         className="bg-center bg-cover py-48"
         style={{
