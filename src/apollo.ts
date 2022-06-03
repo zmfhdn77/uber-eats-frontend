@@ -12,7 +12,10 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authToken = makeVar(token);
 
 const httpLink = createHttpLink({
-  uri: "https://zmfhdn-uber-eats-clone-backend.herokuapp.com/graphql",
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "https://zmfhdn-uber-eats-clone-backend.herokuapp.com/graphql"
+      : "http://localhost:4000/graphql",
 });
 const authLink = setContext((_, { headers }) => {
   return {
