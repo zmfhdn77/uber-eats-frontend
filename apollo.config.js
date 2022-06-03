@@ -4,7 +4,7 @@ module.exports = {
     tagName: "gql",
     service: {
       name: "uber-eats-backend",
-      url: "http://localhost:4000/graphql",
+      url: "https://zmfhdn-uber-eats-clone-backend.herokuapp.com/graphql",
     },
   }, // highlight-line
 };

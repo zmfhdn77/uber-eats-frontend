@@ -85,10 +85,13 @@ export const AddRestaurant = () => {
       const formBody = new FormData();
       formBody.append("file", actualFile);
       const { url: coverImg } = await (
-        await fetch("http://localhost:4000/uploads", {
-          method: "POST",
-          body: formBody,
-        })
+        await fetch(
+          "https://zmfhdn-uber-eats-clone-backend.herokuapp.com/uploads",
+          {
+            method: "POST",
+            body: formBody,
+          },
+        )
       ).json();
       setImageUrl(coverImg);
       createRestaurantMutation({
