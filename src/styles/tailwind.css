@@ -9,4 +9,8 @@
   @apply max-w-screen-2xl mx-auto;
 }
 
+.btn {
+  @apply mt-3 text-lg font-medium focus:outline-none text-white py-4 transition-colors bg-lime-500 hover:bg-lime-800;
+}
+
 @tailwind utilities;
